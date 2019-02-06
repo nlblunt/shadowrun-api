@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20180304035017) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "metatypes", force: :cascade do |t|
     t.string "name"
     t.integer "body_start"
@@ -52,8 +55,8 @@ ActiveRecord::Schema.define(version: 20180304035017) do
     t.integer "resonance"
     t.integer "magic"
     t.integer "karma"
-    t.integer "user_id"
-    t.integer "metatype_id"
+    t.bigint "user_id"
+    t.bigint "metatype_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["metatype_id"], name: "index_runners_on_metatype_id"
