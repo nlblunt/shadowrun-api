@@ -1,0 +1,2 @@
+class MWeapon < ApplicationRecord
+end
