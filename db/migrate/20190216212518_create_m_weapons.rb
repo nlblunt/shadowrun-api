@@ -7,7 +7,7 @@ class CreateMWeapons < ActiveRecord::Migration[5.1]
       t.string :damage
       t.string :ap
       t.string :avail
-      t.number :cost
+      t.integer :cost
 
       t.timestamps
     end

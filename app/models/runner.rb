@@ -6,6 +6,30 @@ class Runner < ApplicationRecord
 	belongs_to :user
 	belongs_to :metatype
 
+	### Skills
+	has_many :runners_skills
+	has_many :skills, :through => :runners_skills
+
+	def new_runner(params, skills)
+		self.name = params[:name]
+		self.user_id = params[:user_id]
+		self.metatype_id = params[:metatype_id]
+
+		self.body = params[:body]
+		self.agility = params[:agility]
+		self.reaction = params[:reaction]
+		self.strength = params[:strength]
+		self.willpwer = params[:willpwer]
+		self.logic = params[:logic]
+		self.intuition = params[:intuition]
+		self.charisma = params[:charisma]
+
+		self.skills << Skill.all
+
+		
+		self.save!
+	end
+
 	def set_initial_attributes
 		self.body = self.metatype.body_start
 		self.agility = self.metatype.agility_start
