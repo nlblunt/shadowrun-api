@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190216212518) do
+ActiveRecord::Schema.define(version: 20190226090000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,23 @@ ActiveRecord::Schema.define(version: 20190216212518) do
     t.datetime "updated_at", null: false
     t.index ["metatype_id"], name: "index_runners_on_metatype_id"
     t.index ["user_id"], name: "index_runners_on_user_id"
+  end
+
+  create_table "runners_skills", force: :cascade do |t|
+    t.bigint "runner_id"
+    t.bigint "skill_id"
+    t.integer "rank", default: 0
+    t.index ["runner_id"], name: "index_runners_skills_on_runner_id"
+    t.index ["skill_id"], name: "index_runners_skills_on_skill_id"
+  end
+
+  create_table "skills", force: :cascade do |t|
+    t.string "name"
+    t.string "attribute"
+    t.string "category"
+    t.boolean "defaultable"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
