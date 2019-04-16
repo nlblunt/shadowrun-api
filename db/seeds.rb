@@ -112,21 +112,21 @@ Skill.create(name: 'Professional Knowledge', attrib: 'Logic', category: 'Combat'
 Skill.create(name: 'Software', attrib: 'Logic', category: 'Combat', defaultable: true)
 
 #WILLPOWER SKILLS
-Skill.create(name: 'Astral Combat', attrib: 'Willpower', category: 'Combat', defaultable: true)
+Skill.create(name: 'Astral Combat', attrib: 'Willpower', category: 'Combat', defaultable: false)
 Skill.create(name: 'Survival', attrib: 'Willpower', category: 'Combat', defaultable: true)
 
 #MAGIC SKILLS
-Skill.create(name: 'Alchemy', attrib: 'Magic', category: 'Combat', defaultable: true)
-Skill.create(name: 'Artificing', attrib: 'Magic', category: 'Combat', defaultable: true)
-Skill.create(name: 'Banishing', attrib: 'Magic', category: 'Combat', defaultable: true)
-Skill.create(name: 'Binding', attrib: 'Magic', category: 'Combat', defaultable: true)
-Skill.create(name: 'Counterspelling', attrib: 'Magic', category: 'Combat', defaultable: true)
-Skill.create(name: 'Disenchanting', attrib: 'Magic', category: 'Combat', defaultable: true)
-Skill.create(name: 'Ritual Spellcasting', attrib: 'Magic', category: 'Combat', defaultable: true)
-Skill.create(name: 'Spellcasting', attrib: 'Magic', category: 'Combat', defaultable: true)
-Skill.create(name: 'Summoning', attrib: 'Magic', category: 'Combat', defaultable: true)
+Skill.create(name: 'Alchemy', attrib: 'Magic', category: 'Combat', defaultable: false)
+Skill.create(name: 'Artificing', attrib: 'Magic', category: 'Combat', defaultable: false)
+Skill.create(name: 'Banishing', attrib: 'Magic', category: 'Combat', defaultable: false)
+Skill.create(name: 'Binding', attrib: 'Magic', category: 'Combat', defaultable: false)
+Skill.create(name: 'Counterspelling', attrib: 'Magic', category: 'Combat', defaultable: false)
+Skill.create(name: 'Disenchanting', attrib: 'Magic', category: 'Combat', defaultable: false)
+Skill.create(name: 'Ritual Spellcasting', attrib: 'Magic', category: 'Combat', defaultable: false)
+Skill.create(name: 'Spellcasting', attrib: 'Magic', category: 'Combat', defaultable: false)
+Skill.create(name: 'Summoning', attrib: 'Magic', category: 'Combat', defaultable: false)
 
 #RESONANCE SKILLS
-Skill.create(name: 'Compiling', attrib: 'Resonance', category: 'Combat', defaultable: true)
-Skill.create(name: 'Decompiling', attrib: 'Resonance', category: 'Combat', defaultable: true)
-Skill.create(name: 'Registering', attrib: 'Resonance', category: 'Combat', defaultable: true)
+Skill.create(name: 'Compiling', attrib: 'Resonance', category: 'Combat', defaultable: false)
+Skill.create(name: 'Decompiling', attrib: 'Resonance', category: 'Combat', defaultable: false)
+Skill.create(name: 'Registering', attrib: 'Resonance', category: 'Combat', defaultable: false)
