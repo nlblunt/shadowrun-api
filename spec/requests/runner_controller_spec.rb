@@ -9,6 +9,10 @@ RSpec.describe RunnerController, :type => :request do
 
 	subject { create(:runner, user_id: create(:user).id, metatype_id: create(:metatype).id) }
 
+    it "returns http success" do
+      post "/runner/create", params: {name: "Test"}
+      expect(response).to have_http_status(:success)
+    end
 
 	it "creates a new Runner for the User" do
 		#params = {user_id: @user.id, metatype_id: @meta.id, name: "Test Runner", concept: "Rigger"}

@@ -44,7 +44,14 @@ class Runner < ApplicationRecord
 		self.intuition = self.metatype.intuition_start
 		self.charisma = self.metatype.charisma_start
 
-		self.save!
+		pp self
+		if self.save
+			pp "True"
+			return true
+		else
+			pp "False"
+			return false
+		end
 	end
 
 	def adjust_attribute(attrib, amount2)

@@ -2,8 +2,11 @@ class RunnerController < ApplicationController
 	#Create a new Shadowrunner with metatype initial attributes.  Will need to increase attributes via INCREASE_ATTRIBUTE.
 	def create
 		runner = Runner.new(runner_params)
-		runner.set_initial_attributes
-		runner.save!
+		if runner.set_initial_attributes
+			render head :success
+		else
+			render head :error
+		end
 	end
 
 	#Create a new Shadowrunner with supplied attributes.  Will not check for validations.
