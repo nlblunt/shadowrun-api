@@ -11,6 +11,7 @@ class Runner < ApplicationRecord
 	has_many :skills, :through => :runners_skills
 
 	def new_runner(params, skills)
+		pp params
 		self.name = params[:name]
 		self.user_id = params[:user_id]
 		self.metatype_id = params[:metatype_id]
@@ -19,7 +20,7 @@ class Runner < ApplicationRecord
 		self.agility = params[:agility]
 		self.reaction = params[:reaction]
 		self.strength = params[:strength]
-		self.willpwer = params[:willpwer]
+		self.willpower = params[:willpower]
 		self.logic = params[:logic]
 		self.intuition = params[:intuition]
 		self.charisma = params[:charisma]
@@ -28,8 +29,10 @@ class Runner < ApplicationRecord
 
 		
 		if self.save!
+			pp "Save True"
 			return true
 		else
+			pp "Save False"
 			return false
 		end
 	end

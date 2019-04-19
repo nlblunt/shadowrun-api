@@ -3,24 +3,32 @@ class RunnerController < ApplicationController
 	def create
 		runner = Runner.new(runner_params)
 		if runner.set_initial_attributes
-			render head :success
+			pp "Set Attributes true"
+			head :accepted
 		else
-			render head :error
+			pp "Set Attributes false"
+			head :error
 		end
 	end
 
 	#Create a new Shadowrunner with supplied attributes.  Will not check for validations.
 	def create_runner
+		pp params[:runner]
 		#Create a new runner
-		@runner = Runner.new(runner_params)
-
+		#@runner = Runner.new(runner_params)
+		@runner = Runner.new
+		
 		#Set the new runenr attributes and skill ranks
-		if @runner.new_runner(runner_params, params[:skills])
+		if @runner.new_runner(params[:runner], params[:skills])
+			pp "New Runner Success"
 			#If successful, return the new runner
-			render json: @runner
+			head :success
+			#render json: @runner, status: :success
 		else
+			pp "New Runner Error"
 			#Else return an error message
-			render json: {head: error, msg: "Error creating new Shadowrunner."}
+			#head :error
+			render json: {msg: "Error creating new Shadowrunner."}, status: :error
 		end
 	end
 
