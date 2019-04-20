@@ -11,10 +11,10 @@ class Runner < ApplicationRecord
 	has_many :skills, :through => :runners_skills
 
 	def new_runner(params, skills)
-		pp params
 		self.name = params[:name]
 		self.user_id = params[:user_id]
 		self.metatype_id = params[:metatype_id]
+		self.concept = params[:concept]
 
 		self.body = params[:body]
 		self.agility = params[:agility]
@@ -25,14 +25,21 @@ class Runner < ApplicationRecord
 		self.intuition = params[:intuition]
 		self.charisma = params[:charisma]
 
+		pp skills
 		self.skills << Skill.all
 
+		skills.each do |skill|
+			pp skill[:id]
+			pc_skill = self.runners_skills.find_by_skill_id(skill[:id])
+			if pc_skill
+				pc_skill.rank = skill[:rank]
+				self.runners_skills << pc_skill
+			end
+		end
 		
-		if self.save!
-			pp "Save True"
+		if self.save
 			return true
 		else
-			pp "Save False"
 			return false
 		end
 	end
@@ -47,12 +54,9 @@ class Runner < ApplicationRecord
 		self.intuition = self.metatype.intuition_start
 		self.charisma = self.metatype.charisma_start
 
-		pp self
 		if self.save
-			pp "True"
 			return true
 		else
-			pp "False"
 			return false
 		end
 	end
@@ -65,7 +69,7 @@ class Runner < ApplicationRecord
 			when "body"
 				if(body + amount > metatype.body_max)
 					errors.add(:error, "value too high")
-					return false
+					return :error
 				else
 					self.body += amount
 				end
