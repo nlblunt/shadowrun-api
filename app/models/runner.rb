@@ -69,56 +69,56 @@ class Runner < ApplicationRecord
 			when "body"
 				if(body + amount > metatype.body_max)
 					errors.add(:error, "value too high")
-					return :error
+					return false
 				else
 					self.body += amount
 				end
 			when "agility"
 				if(agility + amount > metatype.agility_max)
 					errors.add(:error, "value too high")
-					return :error
+					return false
 				else
 					self.agility += amount
 				end
 			when "reaction"
 				if(reaction + amount > metatype.reaction_max)
 					errors.add(:error, "value too high")
-					return :error
+					return false
 				else
 					self.reaction += amount
 				end
 			when "strength"
 				if(strength + amount > metatype.strength_max)
 					errors.add(:error, "value too high")
-					return :error
+					return false
 				else
 					self.strength += amount
 				end
 			when "willpower"
 				if(willpower + amount > metatype.willpower_max)
 					errors.add(:error, "value too high")
-					return :error
+					return false
 				else
 					self.willpower += amount
 				end
 			when "logic"
 				if(logic + amount > metatype.logic_max)
 					errors.add(:error, "value too high")
-					return :error
+					return false
 				else
 					self.logic += amount
 				end
 			when "intuition"
 				if(intuition + amount > metatype.intuition_max)
 					errors.add(:error, "value too high")
-					return :error
+					return false
 				else
 					self.intuition += amount
 				end
 			when "charisma"
 				if(charisma + amount > metatype.charisma_max)
 					errors.add(:error, "value too high")
-					return :error
+					return false
 				else
 					self.charisma += amount
 				end
