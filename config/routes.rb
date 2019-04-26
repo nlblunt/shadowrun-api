@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'skill/index'
+
   get 'metatype/index'
 
   mount_devise_token_auth_for 'User', at: 'auth'
