@@ -161,11 +161,14 @@ GEM
     websocket-extensions (0.1.3)
 
 PLATFORMS
+  ruby
   x64-mingw32
+  x86_64-linux
 
 DEPENDENCIES
   bcrypt
   byebug
+  devise
   devise_token_auth
   factory_bot_rails (~> 4.0)
   jbuilder (~> 2.5)
