@@ -166,6 +166,7 @@ PLATFORMS
 DEPENDENCIES
   bcrypt
   byebug
+  devise
   devise_token_auth
   factory_bot_rails (~> 4.0)
   jbuilder (~> 2.5)
