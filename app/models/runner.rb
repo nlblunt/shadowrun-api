@@ -14,20 +14,34 @@ class Runner < ApplicationRecord
 		self.name = params[:name]
 		self.user_id = params[:user_id]
 		self.metatype_id = params[:metatype_id]
+		self.concept = params[:concept]
 
 		self.body = params[:body]
 		self.agility = params[:agility]
 		self.reaction = params[:reaction]
 		self.strength = params[:strength]
-		self.willpwer = params[:willpwer]
+		self.willpower = params[:willpower]
 		self.logic = params[:logic]
 		self.intuition = params[:intuition]
 		self.charisma = params[:charisma]
 
+		pp skills
 		self.skills << Skill.all
 
+		skills.each do |skill|
+			pp skill[:id]
+			pc_skill = self.runners_skills.find_by_skill_id(skill[:id])
+			if pc_skill
+				pc_skill.rank = skill[:rank]
+				self.runners_skills << pc_skill
+			end
+		end
 		
-		self.save!
+		if self.save
+			return true
+		else
+			return false
+		end
 	end
 
 	def set_initial_attributes
@@ -40,7 +54,11 @@ class Runner < ApplicationRecord
 		self.intuition = self.metatype.intuition_start
 		self.charisma = self.metatype.charisma_start
 
-		self.save!
+		if self.save
+			return true
+		else
+			return false
+		end
 	end
 
 	def adjust_attribute(attrib, amount2)
@@ -58,49 +76,49 @@ class Runner < ApplicationRecord
 			when "agility"
 				if(agility + amount > metatype.agility_max)
 					errors.add(:error, "value too high")
-					return :error
+					return false
 				else
 					self.agility += amount
 				end
 			when "reaction"
 				if(reaction + amount > metatype.reaction_max)
 					errors.add(:error, "value too high")
-					return :error
+					return false
 				else
 					self.reaction += amount
 				end
 			when "strength"
 				if(strength + amount > metatype.strength_max)
 					errors.add(:error, "value too high")
-					return :error
+					return false
 				else
 					self.strength += amount
 				end
 			when "willpower"
 				if(willpower + amount > metatype.willpower_max)
 					errors.add(:error, "value too high")
-					return :error
+					return false
 				else
 					self.willpower += amount
 				end
 			when "logic"
 				if(logic + amount > metatype.logic_max)
 					errors.add(:error, "value too high")
-					return :error
+					return false
 				else
 					self.logic += amount
 				end
 			when "intuition"
 				if(intuition + amount > metatype.intuition_max)
 					errors.add(:error, "value too high")
-					return :error
+					return false
 				else
 					self.intuition += amount
 				end
 			when "charisma"
 				if(charisma + amount > metatype.charisma_max)
 					errors.add(:error, "value too high")
-					return :error
+					return false
 				else
 					self.charisma += amount
 				end

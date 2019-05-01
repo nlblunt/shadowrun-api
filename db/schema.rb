@@ -17,7 +17,12 @@ ActiveRecord::Schema.define(version: 20190226090000) do
 
   create_table "m_weapons", force: :cascade do |t|
     t.string "name"
-    t.integer "damage"
+    t.string "accuracy"
+    t.string "reach"
+    t.string "damage"
+    t.string "ap"
+    t.string "avail"
+    t.integer "cost"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -80,7 +85,7 @@ ActiveRecord::Schema.define(version: 20190226090000) do
 
   create_table "skills", force: :cascade do |t|
     t.string "name"
-    t.string "attribute"
+    t.string "attrib"
     t.string "category"
     t.boolean "defaultable"
     t.datetime "created_at", null: false
